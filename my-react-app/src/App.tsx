@@ -1,35 +1,34 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { About } from "./components/About";
+import { Link } from "./components/UI";
+import Reminders from "./components/Reminders";
+import { Route, Routes } from "react-router-dom";
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App() {
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div className="pt-12">
+      <header className="max-w-md mx-auto">
+        <nav className="mt-4 space-x-5">
+          <Link
+            to={`/${location.search}`}
+            inactiveClassName={""}
+            activeClassName={""}
+            title="Reminders"
+          />
 
-export default App
+          <Link
+            to={`/about${location.search}`}
+            inactiveClassName={""}
+            activeClassName={""}
+            title="About"
+          />
+        </nav>
+      </header>
+      <main className="mt-10">
+        <Routes>
+          <Route path="/about" element={<About />} />
+          <Route path="/:listId?" element={<Reminders />} />
+        </Routes>
+      </main>
+    </div>
+  );
+}
