@@ -1,9 +1,9 @@
 /*
   This is the final solution for Part 9 of the Tutorial that tests the Reminders app.
 */
-import { visit } from "../lib/test-helpers";
+import { visit } from "./test-helpers";
 import { screen, waitForElementToBeRemoved } from "@testing-library/react";
-import makeServer from "../server";
+import makeServer from "../../../mirage-tutorial/src/server";
 import userEvent from "@testing-library/user-event";
 
 let server;

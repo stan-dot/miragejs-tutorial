@@ -1,13 +1,12 @@
-import React from "react";
-import { Switch, Route, useLocation } from "react-router-dom";
-import Reminders from "./Reminders";
+import { Route, Routes, useLocation } from "react-router-dom";
 import { About } from "./About";
+import Reminders from "./Reminders";
 import { Link } from "./UI";
 
 export default function App() {
-  let location = useLocation();
-  let aboutIsActive = location.pathname.match("/about");
-  let remindersIsActive = !aboutIsActive;
+  const location = useLocation();
+  const aboutIsActive = location.pathname.match("/about");
+  const remindersIsActive = !aboutIsActive;
 
   return (
     <div className="pt-12">
@@ -37,14 +36,14 @@ export default function App() {
       </header>
 
       <main className="mt-10">
-        <Switch>
+        <Routes>
           <Route path="/about">
             <About />
           </Route>
-          <Route path="/:listId?" exact>
+          <Route path="/:listId?">
             <Reminders />
           </Route>
-        </Switch>
+        </Routes>
       </main>
     </div>
   );
